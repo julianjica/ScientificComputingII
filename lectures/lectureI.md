@@ -237,3 +237,132 @@ Taken from https://education.scinet.utoronto.ca/mod/resource/view.php?id=2329
 - Cryptography.
 	- RSA algorithm relies on finding the prime divisors of a number.
 - and much more...
+
+---
+
+# HPC (High Performance Computing)
+- Scientific simulation and modeling drive the **need** for greater computer power.
+- Single-core processors **can not** be made to have enough resource for the simulations (calculations) that are currently needed.
+	- Making processors with faster clock speeds is difficult due to cost and power/heat limitations.
+- **Solution: Parallel Computing** - divide the work among numerous linked systems.
+
+---
+
+## Generic Parallel Machine
+<div class="columns">
+<div>
+
+<center><img src="images/computer-room-cooling.jpg" style="width: 100%" align="center"/></center>
+</div>
+<div>
+
+- Each computer is called a compute **node**.
+- Each node has $m$ processor-**cores**.
+- These devices are either connected
+	- Physically or
+	- Through an intranet.
+</div>
+</div>
+
+---
+
+### About our Workstation
+
+<style scoped>li { font-size: 20px; }</style>
+During our course, you **may** work on it.
+<div class="columns">
+<div>
+
+<center><img src="images/Servidor-Dell-PowerEdge-T40.jpg" style="width: 100%" align="center"></center>
+</div>
+<div>
+
+- **12** Procesadores físicos de 2.20GHz (Intel Xeon Processor E5-2650 v4, 2.9GHz Turbo, 2400MHz, 30MB, 105W).
+- **32 GB** de RAM (8x4GB, 2400MHz DDR4).
+- **2TB** de disco duro SATA 7.2k RPM.
+<center><img src="images/our_server.png" style="width: 100%" align="center"></center>
+</div>
+</div>
+
+---
+
+### What do we mean by performance?
+- For scientific and technical programming we use FLOPS
+	- Floating Point OPerations per Second.
+- Modern Supercomputers' performance is measured in PFLOPS (PetaFLOPS)
+	- Giga, Tera, **Peta**, exa = $10^9, 10^{12},10^{15},10^{18}.$
+
+---
+
+### Differences from Desktop Computing
+- We do not log on to compute nodes directly.
+	- The jobs are submitted via a batch scheduling system.
+- (Generally) Not a GUI-based environment.
+- You usually share the system with many users.
+- The resources are tightly monitored and controlled.
+	- Disk quotas.
+	- CPU usage.
+	- Idle time.
+<center><img src="images/idle-time.png" style="width: 100%" align="center"></center>
+
+---
+
+### Typical System Layout
+<center><img src="images/system_layout.png" style="width: 100%" align="center"></center>
+
+The diagram can be found [here](https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZABgBoBGAXVJADcBDAGwFcYkQBNCZkAX1PSZc+QinIVqdJq3YAZCAHMsYADoqABADlobfoOx4CRAMwSaDFm0QgAwhAC2aZjhhr1kWAj0gMBkUQAWMylLdjVaKAgcLwEfIUNRZCDiSQsZa3I+WN9hIxQggCZU6SsQeyz9XMSC0iLzEvYAESw4AGs+SRgoBXgiUAAzACcHJDIQHAgkcRAAIxgwKCQAWmMxxno5xgAFeP9rQawFAAscEHrQ6wBVNEYIeigAekiAdzBb+7coehx6CpAhkaIaYTUY0OYLZarc7pEAAZVhAAk3C5BvZlEwziB1psdn48iADsdTt4AeUgTQQYgaljlKU4BBGFhFjQjjB7kgwMxGIwKfQsIx2JAwLpYqSkNTKdM0qUZt8AMZHdRuOAATzgLkIJOGZIlk0QAS1gN1SGMhp1FL1AFYzeKLUgAGw28njPWO0Xah12oG8Si8IA)
+
+---
+
+### Typical Software Usage Flow
+<center><img src="images/usage_flow.png" style="width: 100%" align="center"></center>
+
+---
+
+### The 80/20 rule
+- Programs typically spend 80% of their time in 20% of the code.
+- Programmers typically spend 20% of their effort to get 80% of the total speedup for the application. 
+- Do not optimize what is not required.
+
+---
+
+### Metrics of performance
+What can be measured?
+- A **count** of how often an event occurs.
+- The **duration** of some interval.
+- The **size** of some parameter.
+
+<div class="columns">
+<div>
+
+Execution time:
+- Wall-clock time.
+- CPU time.
+</div>
+<div>
+
+How are performance measurements triggered?
+- Sampling.
+- Code instrumentation.
+</div>
+</div>
+
+*Note:* Execution time is non-deterministic.
+
+---
+
+### Typical performance analysis procedure
+**Do** I have a performance problem at all?
+- Time / speedup / scalability measurements / how near to limits.
+
+**What** is the key bottleneck (computation / communication)?
+- MPI / OpenMP / flat profiling.
+
+**Where** is the key bottleneck?
+- Call-path profiling, detailed basic block profiling.
+
+**Why** is it there?
+- Hardware counter analysis, trace selected parts to keep trace size manageable.
+
+Does the problem has **scalability problems**?
+- Load imbalance analysis, compare profiles at various sizes function-by-function.
