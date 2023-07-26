@@ -143,13 +143,14 @@ Calculate the square of the first $n$ natural numbers.
 
 ### Sequential
 ```python
-def square_from_to(start = 0, end):
+def square_from_to(start, end):
 	for ii in range(start, end):
 		print(ii ** 2)
 
 if __name__ == "__main__":
 	square_from_to(0, n)
 ```
+$O(n)$
 Time spent: 0.048161 s.
 </div>
 <div>
@@ -165,8 +166,74 @@ def control_unit(n, m):
 if __name__ == "__main__":
 	control_unit(n, m)
 ```
+$O(n/m)$
 Time spent: 0.012770 s.
 </div>
 </div>
 
 For $n=100000$ and $m=10$.
+
+The full code can be found [here](https://github.com/julianjica/ScientificComputingII/blob/master/scripts/example_parallel.py).
+
+---
+
+<style scoped>section { font-size: 20px; }</style>
+
+# Motivation
+
+## Moore's Law
+
+
+<div class="columns">
+<div>
+<img src="images/moore.png" style="width: 100%" align="center"/>
+
+Taken from https://education.scinet.utoronto.ca/mod/resource/view.php?id=2329
+</div>
+<div>
+"The number of transistors that can be placed inexpensively on an integrated circuit doubles approximately every two years"
+
+
+Nevertheless,
+- This does not imply an increasing clock speed, because power density is the limiting factor.
+- It is reaching its physical limits.
+- The continuation of Moore's law is due to the presence of multiple cores, which require **parallel programming**.
+</div>
+</div>
+
+---
+
+## Moore's Law
+<center><img src="images/trends.png" style="width: 50%" align="center"/></center>
+Taken from https://education.scinet.utoronto.ca/mod/resource/view.php?id=2329
+
+---
+
+## Applications
+### Cellular Automata
+<center><img src="images/game_of_life.png" style="width: 60%" align="center"/></center>
+
+---
+
+### Machine Learning
+<center><img src="images/parallel_ml.png" style="width: 70%" align="center"/></center>
+
+---
+
+### Physics' Simulations
+<center><img src="images/physics_modelling.png" style="width: 70%" align="center"/></center>
+
+---
+
+### Other Applications
+- Big Data Processing.
+	- Modern experiments and observations yield vastly more data to be processed than in the past.
+	- There is a huge influx of data.
+- Graph Rendering.
+	- Realistic graphics requires more and more polygons to be displayed.
+	- An increase of the FPS increases the computing time of a video.
+- Web Servers.
+	- The high-demand of clients may require plenty of cores to process petitions.
+- Cryptography.
+	- RSA algorithm relies on finding the prime divisors of a number.
+- and much more...
