@@ -12,7 +12,6 @@ style: |
 
 # Scientific Computing II
 Julián Jiménez-Cárdenas
-![Logo Konrad](images/logoKonrad.jpg)
 
 ---
 # Instructor
