@@ -11,7 +11,8 @@ style: |
 ---
 
 # Scientific Computing II
-Julián Jiménez-Cárdenas
+## Julián Jiménez-Cárdenas
+### Konrad Lorenz University
 
 ---
 # Instructor
@@ -365,3 +366,7 @@ How are performance measurements triggered?
 
 Does the problem has **scalability problems**?
 - Load imbalance analysis, compare profiles at various sizes function-by-function.
+
+---
+
+# End of Lecture I
