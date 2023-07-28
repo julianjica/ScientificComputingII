@@ -1,2 +1,6 @@
 *.html
 *.out
+.ipynb_checkpoints
+*.synctex.gz
+LinearRegression.ipynb
+*.tex
