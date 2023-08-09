@@ -1,7 +1,6 @@
 ---
 marp: true
 theme: rose-pine
-class: invert
 style: |
   .columns {
     display: grid;
