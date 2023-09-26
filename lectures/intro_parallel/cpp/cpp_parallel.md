@@ -200,6 +200,21 @@ so your code should return 10 in this case.
 
 ---
 
+### Introduction to pointers
+
+Pointers are variables that store memory addresses, allowing to access and manipulate data in memory. They are usually used to
+- Dynamic memory allocation (not needed from C++11 and later).
+- Working with arrays.
+- Passing data efficiently to functions.
+
+You declare them using the following syntax:
+```cpp
+type* pointerName;
+```
+Let's go to `examples/example7.cpp`.
+
+---
+
 # Concurrency TS (Technical Specification)
 This Library is more focused on distributed memory, as we initialize threads independently, in a similar fashion than `multiprocessing` library in `Python`. Consider the following example:
 
