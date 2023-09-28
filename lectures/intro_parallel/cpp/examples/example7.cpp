@@ -12,7 +12,7 @@ int main(int argc, char *argv[])
 	int value = 1;
 	pointer = &value; // The pointer is initialized with the
 			  // address of value
-	std::cout << pointer << std::endl; // we get a memory alloc.
+	//std::cout << pointer << std::endl; // we get a memory alloc.
 	
 	// Of course, we could declare and initialize the pointer
 	// in a single line
@@ -33,8 +33,9 @@ int main(int argc, char *argv[])
 	// Passing to functions
 	square_array(array, 4);
 	for (int ii = 0; ii < 4; ii++) {
-		std::cout << *(array + ii) << std::endl;
+		std::cout << *(array + ii) << " ";
 	} /* for (int ii = 0; ii < 4; ii++) */
+	std::cout  << std::endl;
 
 	// N-dim matrix pointers
 	int count = 0;

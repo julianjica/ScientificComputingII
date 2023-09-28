@@ -10,9 +10,9 @@ int main(int argc, char *argv[])
 	int val =0;
 	#pragma omp parallel
 	{
-		omp_set_lock(&writelock);
+		//omp_set_lock(&writelock);
 		val++;
-		omp_unset_lock(&writelock);
+		//omp_unset_lock(&writelock);
 	}
 	std::cout << val;
 	return 0;
