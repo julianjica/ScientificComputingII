@@ -2,19 +2,45 @@
 #include <thread>
 #include <vector>
 #include <random>
+#include <algorithm>
 
 
-void initialize_matrix(bool matrix[][200], float rho)
+void initialize_matrix(bool matrix[][200], float rho, bool toss_coin = false)
 { // This function initializes the matrix based on the initial density rho
-	std::random_device rd;  // Will be used to obtain a seed for the random number engine
-	std::mt19937 gen(rd()); // Standard mersenne_twister_engine seeded with rd()
-	std::uniform_real_distribution<> dis(0, 1);	
+	if (toss_coin){
+		std::random_device rd;  // Will be used to obtain a seed for the random number engine
+		std::mt19937 gen(rd()); // Standard mersenne_twister_engine seeded with rd()
+		std::uniform_real_distribution<> dis(0, 1);	
 
-	for (int ii = 0; ii < 200; ++ii) {
-		for (int jj = 0; jj < 200; ++jj) {
-			// We throw a coin to check if a cell is alive or dead
-			if (dis(gen) <= rho) matrix[ii][jj] = true;
-			else matrix[ii][jj] = false;
+		for (int ii = 0; ii < 200; ++ii) {
+			for (int jj = 0; jj < 200; ++jj) {
+				// We throw a coin to check if a cell is alive or dead
+				if (dis(gen) <= rho) matrix[ii][jj] = true;
+				else matrix[ii][jj] = false;
+			}
+		}
+	}else{
+		// Initialize the random number generator with the current time
+		std::srand(static_cast<unsigned int>(std::time(nullptr)));
+
+		// We can also choose beforehand the cells that are going to be alive
+		// For this, we generate N = 200 * 200 * rho unique random indices
+		int N = 200 * 200 * rho;
+		std::vector<int> random_indices;
+		for (int ii = 0; ii < N; ++ii) {
+			int random_index;
+			do{
+				random_index = std::rand() % (200 * 200);
+			}while(std::find(random_indices.begin(), random_indices.end(), random_index)
+					!= random_indices.end()); 
+			random_indices.push_back(random_index);
+		}
+		// And with these we initialize the alive cells
+		for (int index = 0; index < N; ++index) {
+			int value = random_indices[index];
+			int ii = value / 200;
+			int jj = value % 200; 
+			matrix[ii][jj] = true;
 		}
 	}
 }
